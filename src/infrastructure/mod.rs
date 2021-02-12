@@ -6,7 +6,7 @@
 // KIND, either express or implied. Please review the Licences for the specific language governing
 // permissions and limitations relating to use of the SAFE Network Software.
 
-use crate::{MessageType, WireMsg};
+use crate::{client::Error as ClientError, MessageType, WireMsg};
 use bytes::Bytes;
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, net::SocketAddr};
@@ -20,6 +20,8 @@ pub enum Query {
     GetSectionRequest(XorName),
     /// Response to `GetSectionRequest`.
     GetSectionResponse(GetSectionResponse),
+    /// Response to regarding fased sectoin key.
+    SectionKeyResponse(ClientError),
 }
 
 /// Information about a section.
